@@ -43,14 +43,17 @@ on:
         default: 'recovery'
 
 jobs:
-  build:
-    if: github.event.repository.owner.id == github.event.sender.id
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+  my_first_job:
     steps:
-    - name: Display Run Parameters
-      run: |
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          repository: octocat/my-private-repo
+          ref: v1.0
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          path: ./.github/actions/my-private-repo
+      - name: Run my action
+        uses: ./.github/actions/my-private-repo/my-action |
         echo "::group::User Environment Variables"
         echo "Manifest URL: ${{ github.event.inputs.MANIFEST_URL }}"
         echo "Manifest Branch: ${{ github.event.inputs.MANIFEST_BRANCH }}"

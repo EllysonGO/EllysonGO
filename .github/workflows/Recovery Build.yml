@@ -45,8 +45,8 @@ on:
 
  
     # You might want to Checkout your repo first, but not mandatory
-    - name: Check Out
-      uses: actions/checkout@v3
+    - name: EllysonGO
+      uses: actions/checkout@v4
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
     - name: Cleanup
       uses: rokibhasansagar/slimhub_actions@main
@@ -57,6 +57,7 @@ on:
         sudo apt update
         sudo apt -y upgrade
         sudo apt -y install gperf gcc-multilib gcc-10-multilib g++-multilib g++-10-multilib libc6-dev lib32ncurses5-dev x11proto-core-devjobs:
+  jobs:
   my_first_job:
     steps:
       - name: Check out repository
@@ -67,8 +68,7 @@ on:
           token: ${{ secrets.EllysonGO }}
           path: ./.github/actions/my-private-repo
       - name: Run my action
-        uses: ./.github/actions/my-private-repo/my-action libx11-dev tree lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc bc ccache lib32readline-dev lib32z1-dev liblz4-tool libncurses5-dev libsdl1.2-dev libwxgtk3.0-gtk3-dev libxml2 lzop pngcrush schedtool squashfs-tools imagemagick libbz2-dev lzma ncftp qemu-user-static libstdc++-10-dev libncurses5 python3
-
+        uses: ./.github/actions/my-private-repo/my-action
     - name: Install OpenJDK
       uses: actions/setup-java@v3
       with:
